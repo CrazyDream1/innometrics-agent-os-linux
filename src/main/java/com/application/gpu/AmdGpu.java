@@ -13,11 +13,16 @@ public class AmdGpu implements Gpu{
             Process process = Runtime.getRuntime().exec(command);
 
             Scanner scanner = new Scanner(process.getInputStream());
-            var percent = scanner.next();
 
-            process.destroy();
+            scanner.useDelimiter("\\A");
+            String commandOutput = scanner.next();
 
-            return Integer.parseInt(percent);
+            String[] usageInfoEntries = commandOutput.split("\n")[1].split(":")[1].split(",");
+
+
+            String gpuUtil = usageInfoEntries[1].split(" ")[2];
+
+            return Integer.parseInt(gpuUtil);
         }catch (Exception ignored){}
         return 0;
     }
