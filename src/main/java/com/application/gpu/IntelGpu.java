@@ -8,7 +8,7 @@ public class IntelGpu implements Gpu {
     @Override
     public int GetGpuUsage() {
         /*
-         * nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader -> 0 %
+         * intel_gpu_top
          * */
         var command = "intel_gpu_top -l -s 5000";
         String s;

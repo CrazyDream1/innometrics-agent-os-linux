@@ -6,7 +6,7 @@ public class NvidiaGpu implements Gpu{
     @Override
     public int GetGpuUsage() {
         /*
-         * nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader -> 0 %
+         * nvidia-smi
          * */
         var command = "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader";
         try {

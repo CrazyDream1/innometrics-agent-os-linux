@@ -6,7 +6,7 @@ public class AmdGpu implements Gpu{
     @Override
     public int GetGpuUsage() {
         /*
-         * nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader -> 0 %
+         * radeontop
          * */
         var command = "radeontop -l 1 -d -";
         try {
