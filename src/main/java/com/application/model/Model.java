@@ -6,6 +6,7 @@ import com.application.UI.UpdatePage;
 import com.application.collectorApi.DataCollectorAPI;
 import com.application.data.Activity;
 import com.application.data.SystemProcess;
+import com.application.gpu.GpuCollector;
 import com.application.nativeimpl.ActiveWindowInfo;
 import com.application.utils.DialogsAndAlert;
 import dorkbox.systemTray.MenuItem;
@@ -892,6 +893,13 @@ public class Model {
 				vRAM.put("measurementTypeId", "4");
 				vRAM.put("value", processLine[4]);
 				measurements.put("vRAM",vRAM);
+
+				JSONObject gpu = new JSONObject();
+				gpu.put("alternativeLabel", "GPU%");
+				gpu.put("capturedDate", captureTime);
+				gpu.put("measurementTypeId", "7");
+				gpu.put("value", new GpuCollector().GetGpuUsage());
+				measurements.put("Gpu",gpu);
 
 				if (si.getHardware().getPowerSources().size() >= 1){
 					List<PowerSource> PowerSources = si.getHardware().getPowerSources();
